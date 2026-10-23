@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Static snapshot of the ink token at Moon 2 (hue 254, tone 4%,
+       chroma 1), converted to plain hex. Loaded standalone as the favicon,
+       whose rendering pipeline is stricter than a normal page: oklch() as a
+       fill value broke it, and XML comments cannot contain a literal double
+       hyphen anywhere in their body, which an earlier version of this
+       comment did. Re-derive by hand if the palette moves. -->
+  <rect width="32" height="32" rx="7" fill="#1b2f47"/>
+  <circle cx="16" cy="16" r="10" fill="none" stroke="#ffffff" stroke-width="3.2"
+    stroke-linecap="round" stroke-dasharray="44.5 18.3" transform="rotate(140 16 16)"/>
+  <circle cx="16" cy="16" r="6.5" fill="none" stroke="#ffffff" stroke-width="2.4"
+    stroke-linecap="round" stroke-dasharray="28.9 11.9" transform="rotate(-40 16 16)"/>
+</svg>
