@@ -49,25 +49,20 @@ export default function Hero() {
   return (
     <section className="hero" ref={ref} onPointerMove={onPointerMove}>
       <motion.div className="hero-bg" style={{ y: bgY }} aria-hidden="true">
-        {/* rim light behind the portrait, recoloured with each word */}
+        {/* single accent rim light behind the portrait, breathing slowly */}
         <motion.div className="hero-rim" style={{ x: glowX, y: glowY }}>
-          <AnimatePresence initial={false}>
-            <motion.span
-              key={current.word}
-              style={{ background: `radial-gradient(closest-side, ${current.glow[0]}, transparent)` }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.6, ease: EASE }}
-            />
-          </AnimatePresence>
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={ready ? { opacity: [0.75, 1, 0.75], scale: [1, 1.05, 1] } : {}}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          />
         </motion.div>
 
         {site.hasPortrait && (
           <motion.div
             className="hero-portrait"
             style={{ x: portraitX, y: portraitY }}
-            initial={{ opacity: 0, y: 60, scale: 1.04 }}
+            initial={{ opacity: 0, y: 50, scale: 1.04 }}
             animate={ready ? { opacity: 1, y: 0, scale: 1 } : {}}
             transition={{ duration: 1.6, ease: EASE, delay: 0.15 }}
           >
@@ -146,7 +141,7 @@ export default function Hero() {
             </span>
           </span>
           <span className="line" aria-hidden="true">
-            <motion.span
+            {/* <motion.span
               initial={{ scale: 0, opacity: 0 }}
               animate={ready ? { scale: 1, opacity: 1 } : {}}
               transition={{ duration: 0.8, ease: EASE, delay: 0.35 }}
@@ -159,9 +154,11 @@ export default function Hero() {
                 ) : (
                   <span className="avatar-initials">{site.initials}</span>
                 )}
-                <span className="avatar-hover label">About me</span>
+                <span className="avatar-hover label">
+                  About me <i aria-hidden="true">↗</i>
+                </span>
               </Link>
-            </motion.span>
+            </motion.span> */}
             <SplitText play={ready} delay={0.3}>
               people rely on
             </SplitText>

@@ -28,7 +28,7 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ];
 
-// Rotating hero word + the two glow colours that fade in behind it.
+// Rotating hero words. (`glow` is no longer used: the hero rim light is always the accent colour.)
 // Add `image: "/img/your-photo.jpg"` to a word to use a photo instead.
 export const heroWords: { word: string; glow: [string, string]; image?: string }[] = [
   { word: "web apps", glow: ["#054d8a", "#48a68c"] },
@@ -45,6 +45,7 @@ export const logos = [
   { kind: "img" as const, src: "/img/partner-ictchamber.png", label: "ICT Chamber" },
   { kind: "img" as const, src: "/img/partner-edupoto.png", label: "Edupoto" },
   { kind: "img" as const, src: "/img/klok.png", label: "Klok AI" },
+  { kind: "img" as const, src: "/img/rca-logo.png", label: "Rwanda Coding Academy" },
 ];
 
 export const statement =
@@ -259,6 +260,24 @@ export const experience = [
     focus: "Web, mobile, backend & applied AI projects",
     href: "https://github.com/mucyobertrand",
   },
+  {
+    role: "Student · admitted on merit",
+    org: "Rwanda Coding Academy",
+    when: "2024 — 2027",
+    focus: "Software engineering, embedded systems, cybersecurity & AI",
+    href: "https://rca.ac.rw/",
+  },
+];
+
+// Awards & selections, shown on the About page. Add hackathons, competitions, certificates here.
+export const recognition = [
+  {
+    award: "Admitted on merit — national selection",
+    project: "Africa's first coding-focused high school · 3-year programme",
+    year: "2024",
+    org: "Rwanda Coding Academy",
+    href: "https://rca.ac.rw/admissions",
+  },
 ];
 
 export const entelon = {
@@ -278,11 +297,13 @@ export const about = {
   profile: [
     "I'm a web & mobile engineer, backend engineer and applied AI engineer based in Kigali. I lead product at Entelon and build community-first digital tools at IWP Africa.",
     "I work across the whole loop: sitting with teachers, health workers and farmers to understand the problem, shaping the product, writing the code, and measuring whether it actually helped.",
+    "I'm also a student at Rwanda Coding Academy, Africa's first coding-focused high school, where I was admitted through a competitive, merit-based national selection.",
   ],
   mission:
     "My mission is to build technology that the people closest to the problem actually want to use, and to prove it works with evidence, not assumptions.",
   tldr: [
     { k: "Core skills", v: "Web & Mobile Engineering · Backend Engineering · Applied AI Engineering" },
+    { k: "Education", v: "Rwanda Coding Academy, 2024 – 2027 · admitted through competitive national selection" },
     { k: "Roles", v: "Product Lead at Entelon · Developer & Researcher at IWP Africa" },
     { k: "Based in", v: "Kigali, Rwanda" },
     { k: "Stack", v: "TypeScript, React, Next.js, React Native, Expo, Node.js, NestJS, PostgreSQL, Prisma, Python, LLMs, voice AI" },
