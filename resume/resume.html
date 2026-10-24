@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Mucyo Bertrand | Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet" />
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #141414;
+    --muted: #5c5c5c;
+    --soft: #8a8a8a;
+    --line: #e4e2dd;
+    --accent: #e3175f;
+    --side: #f4f3f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink); font-size: 8.7pt; line-height: 1.42;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm; height: 297mm; overflow: hidden; position: relative;
+    display: grid; grid-template-columns: 1fr 64mm;
+    break-after: page;
+  }
+  .page:last-child { break-after: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  .label { font-size: 6.3pt; font-weight: 700; font-stretch: 125%; letter-spacing: 0.16em; text-transform: uppercase; }
+
+  /* ---------- main column ---------- */
+  main { padding: 12mm 10mm 12mm 13mm; }
+  header { display: flex; align-items: center; gap: 5.5mm; margin-bottom: 5mm; }
+  .portrait {
+    width: 23mm; height: 23mm; border-radius: 50%; flex: none;
+    background: #000 url("../public/img/me.jpg") center 12% / 160% auto no-repeat;
+    box-shadow: 0 0 0 1.1mm #fff, 0 0 0 1.4mm var(--accent);
+  }
+  .mark { color: var(--accent); margin-bottom: 1.4mm; }
+  h1 { margin: 0; font-size: 28pt; line-height: 0.95; font-weight: 800; letter-spacing: -0.045em; }
+  h1 .dot { color: var(--accent); }
+  .roles { margin-top: 2.2mm; display: flex; flex-wrap: wrap; gap: 1.4mm; }
+  .roles span {
+    font-size: 5.6pt; font-weight: 700; font-stretch: 118%; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap;
+    border: 0.25mm solid #d6d4cf; border-radius: 99px; padding: 0.9mm 2mm 0.8mm;
+    display: inline-flex; align-items: center; gap: 1.3mm;
+  }
+  .roles span::before { content: ""; width: 1.3mm; height: 1.3mm; border-radius: 50%; background: var(--accent); }
+
+  .mini-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6mm; padding-bottom: 3mm; border-bottom: 0.25mm solid var(--line); }
+  .mini-head b { font-size: 13pt; font-weight: 800; letter-spacing: -0.03em; }
+  .mini-head b span { color: var(--accent); }
+  .mini-head .label { color: var(--soft); }
+
+  section { margin-bottom: 4.4mm; }
+  h2 {
+    margin: 0 0 2.6mm; display: flex; align-items: center; gap: 2.4mm;
+    font-size: 6.6pt; font-weight: 700; font-stretch: 125%; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  h2::before { content: "✱"; color: var(--accent); font-size: 7.8pt; letter-spacing: 0; }
+  h2::after { content: ""; flex: 1; height: 0.25mm; background: var(--line); }
+
+  .summary { font-size: 9.3pt; line-height: 1.42; letter-spacing: -0.008em; margin: 0; }
+  .summary strong { font-weight: 700; }
+
+  .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm; }
+  .hl {
+    border: 0.25mm solid var(--line); border-radius: 2mm; padding: 2.2mm 2.6mm 2.4mm;
+    display: grid; grid-template-columns: 9.5mm 1fr; gap: 2mm; align-items: start;
+  }
+  .hl strong { font-size: 13pt; font-weight: 800; letter-spacing: -0.04em; color: var(--accent); line-height: 1; padding-top: 0.4mm; }
+  .hl p { margin: 0; font-size: 7.7pt; line-height: 1.35; color: var(--muted); }
+  .hl p b { color: var(--ink); }
+  .hl.feature { grid-column: 1 / -1; background: #fdf1f5; border-color: #f6c9d8; }
+
+  .job { margin-bottom: 3.4mm; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .job h3 { margin: 0; font-size: 10.6pt; font-weight: 700; letter-spacing: -0.02em; }
+  .job h3 .at { color: var(--accent); font-weight: 600; }
+  .when { color: var(--soft); white-space: nowrap; }
+  .job .sub { color: var(--muted); font-size: 7.8pt; margin: 0.3mm 0 1.3mm; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  .bul li { position: relative; padding-left: 3.4mm; margin-bottom: 0.7mm; color: #2b2b2b; }
+  .bul li::before { content: ""; position: absolute; left: 0; top: 1.85mm; width: 1.5mm; height: 0.35mm; background: var(--accent); }
+  .bul li b { font-weight: 700; color: var(--ink); }
+
+  .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 3.4mm 5mm; }
+  .project { border-top: 0.25mm solid var(--line); padding-top: 2.2mm; }
+  /* an odd last project spans the full row */
+  .project:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .project h4 { margin: 0; font-size: 9.6pt; font-weight: 700; letter-spacing: -0.015em; display: flex; justify-content: space-between; gap: 2mm; align-items: baseline; }
+  .project h4 span { font-size: 5.9pt; color: var(--accent); font-weight: 700; font-stretch: 125%; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+  .project .bul { margin-top: 1.2mm; }
+  .project .bul li { font-size: 7.8pt; line-height: 1.38; }
+  .project .link { display: block; margin-top: 1mm; color: var(--soft); font-size: 6.9pt; }
+
+  /* ---------- sidebar ---------- */
+  aside {
+    background: var(--side); padding: 12mm 8mm 11mm;
+    display: flex; flex-direction: column; gap: 4.6mm;
+    border-left: 0.6mm solid var(--accent);
+  }
+  aside h2 { margin-bottom: 2.4mm; }
+  .contact li { display: grid; gap: 0.2mm; margin-bottom: 1.9mm; font-size: 7.9pt; }
+  .contact .label { color: var(--soft); font-size: 5.9pt; }
+  .contact a { border-bottom: 0.2mm solid #cfcdc8; justify-self: start; }
+
+  .edu {
+    background: #fff; border: 0.25mm solid #e1dfda; border-left: 0.9mm solid var(--accent);
+    border-radius: 1.5mm; padding: 2.8mm 3mm;
+  }
+  .edu h4 { margin: 0; font-size: 9.6pt; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+  .edu .label { color: var(--accent); display: block; margin: 0.8mm 0 1.6mm; font-size: 5.9pt; }
+  .edu p { margin: 0 0 1.2mm; font-size: 7.5pt; color: var(--muted); line-height: 1.38; }
+  .edu p:last-child { margin-bottom: 0; }
+  .edu b { color: var(--ink); }
+
+  .skill { margin-bottom: 2.3mm; }
+  .skill h4 { margin: 0 0 0.5mm; font-size: 8.9pt; font-weight: 700; letter-spacing: -0.015em; }
+  .skill p { margin: 0; font-size: 7.4pt; color: var(--muted); line-height: 1.38; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 1.2mm; }
+  .chips span {
+    font-size: 5.9pt; font-weight: 700; font-stretch: 125%; letter-spacing: 0.09em; text-transform: uppercase;
+    background: #fff; border: 0.25mm solid #dcdad5; border-radius: 99px; padding: 0.85mm 2mm 0.75mm;
+  }
+  .kit { margin-bottom: 2.6mm; }
+  .kit .label { display: block; color: var(--soft); font-size: 5.8pt; margin-bottom: 1.2mm; }
+
+  .approach { counter-reset: s; }
+  .approach li { display: grid; grid-template-columns: 6mm 1fr; margin-bottom: 1.5mm; font-size: 7.8pt; color: var(--muted); }
+  .approach li::before { counter-increment: s; content: "0" counter(s); color: var(--accent); font-weight: 700; font-size: 6.8pt; font-stretch: 125%; padding-top: 0.3mm; }
+  .approach b { color: var(--ink); }
+
+  .quote { margin: auto 0 0; font-size: 8.2pt; line-height: 1.45; color: #333; border-top: 0.25mm solid #d9d7d2; padding-top: 3.6mm; }
+  .quote::before { content: "\201C"; color: var(--accent); font-size: 17pt; line-height: 0; vertical-align: -3mm; margin-right: 0.6mm; font-weight: 800; }
+
+  .foot { position: absolute; left: 13mm; bottom: 6mm; color: var(--soft); font-size: 5.8pt; }
+</style>
+</head>
+<body>
+
+<!-- ======================= PAGE 1 ======================= -->
+<div class="page">
+  <main>
+    <header>
+      <div class="portrait" role="img" aria-label="Portrait of Mucyo Bertrand"></div>
+      <div>
+        <div class="label mark">M/B — Kigali, Rwanda</div>
+        <h1>Mucyo Bertrand<span class="dot">.</span></h1>
+        <div class="roles">
+          <span>Web &amp; Mobile Engineer</span>
+          <span>Backend Engineer</span>
+          <span>Applied AI Engineer</span>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2>Profile</h2>
+      <p class="summary">
+        Engineer and product lead who turns messy, real-world problems into software people actually use. I build
+        <strong>web and mobile apps</strong>, <strong>production backends</strong> and <strong>applied AI</strong>.
+        I lead product for four AI products at <strong>Entelon</strong> and build community health and livelihood tools at
+        <strong>IWP Africa</strong>, all while studying at <strong>Rwanda Coding Academy</strong>, where I was admitted
+        through a competitive national selection.
+      </p>
+    </section>
+
+    <section>
+      <h2>Highlights</h2>
+      <div class="highlights">
+        <div class="hl feature">
+          <strong>RCA</strong>
+          <p><b>Admitted to Rwanda Coding Academy (2024)</b>: Africa's first coding-focused high school, through a merit-based national selection of top STEM students in Mathematics and Physics, with around 120 places a year.</p>
+        </div>
+        <div class="hl">
+          <strong>04</strong>
+          <p><b>AI products led</b> at Entelon across education, travel, field research and call centres.</p>
+        </div>
+        <div class="hl">
+          <strong>07</strong>
+          <p><b>Products shipped or in progress</b> across Entelon and IWP Africa in AI, health, education and agriculture.</p>
+        </div>
+        <div class="hl">
+          <strong>25+</strong>
+          <p><b>Public repositories</b> spanning web, mobile, backend, IoT and ML.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Product Lead <span class="at">@ Entelon</span></h3>
+          <span class="label when">Present</span>
+        </div>
+        <div class="sub">AI company, Kigali · AI products and custom AI systems that save businesses and institutions time and cost</div>
+        <ul class="bul">
+          <li>Lead product for Entelon's AI portfolio: <b>Klok AI</b>, <b>HeyRwanda</b>, <b>Visko</b> and <b>Phibram</b>, from discovery and roadmap to launch.</li>
+          <li><b>Klok AI (education):</b> reads students' handwritten exam answers and suggests marks step by step, with the teacher reviewing and owning every grade.</li>
+          <li><b>Visko (field research):</b> teams keep their existing questionnaires and speak the answers, so data moves to analysis with no manual entry.</li>
+          <li><b>Phibram (call centres):</b> listens to every call and turns hotline conversations into a continuous view of service quality and customer experience.</li>
+          <li><b>HeyRwanda (travel):</b> a companion for choosing where to go, finding your way and paying along the trip.</li>
+          <li>Work across Entelon's delivery cycle (workflow analysis, integration, ongoing maintenance) on solutions such as workflow automation, voice agents, custom chatbots and AI data analysis.</li>
+        </ul>
+      </div>
+
+      <div class="job" style="margin-bottom:0">
+        <div class="job-head">
+          <h3>Developer &amp; Researcher <span class="at">@ IWP Africa</span></h3>
+          <span class="label when">Present</span>
+        </div>
+        <div class="sub">Insight Wellbeing Partners · community-first, evidence-led health, wellbeing and livelihood solutions</div>
+        <ul class="bul">
+          <li><b>Mamora (health):</b> voice-based platform where households report symptoms as they appear, so community health workers are informed immediately and outbreaks are detected early.</li>
+          <li><b>ECD Intelligence (early childhood):</b> plain-language daily guidance for ECD centre managers on each child, adapted weekly from simple health and development measurements.</li>
+          <li><b>Trace (agriculture):</b> record book for farmers and marketplace for buyers; every product carries its full farm history.</li>
+          <li>Pair engineering with field research and community data systems, following IWP's <b>Listen, Act, Measure, Influence</b> approach so evidence feeds back into programme design.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <aside>
+    <div>
+      <h2>Contact</h2>
+      <ul class="contact">
+        <li><span class="label">Email</span><a href="mailto:mucyobertrand07@gmail.com">mucyobertrand07@gmail.com</a></li>
+        <li><span class="label">GitHub</span><a href="https://github.com/mucyobertrand">github.com/mucyobertrand</a></li>
+        <li><span class="label">Based in</span><span>Kigali, Rwanda</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Education</h2>
+      <div class="edu">
+        <h4>Rwanda Coding Academy</h4>
+        <span class="label">2024 — 2027 · Nyabihu, Western Province</span>
+        <p><b>Admitted on merit</b> through a rigorous national selection: exams and assessments of problem-solving and coding aptitude.</p>
+        <p>Three-year, fully practical programme covering <b>software engineering</b>, <b>embedded systems</b>, <b>cybersecurity</b> and <b>artificial intelligence</b>.</p>
+      </div>
+    </div>
+
+    <div>
+      <h2>Core Skills</h2>
+      <div class="skill">
+        <h4>Web &amp; Mobile Engineering</h4>
+        <p>Next.js and React web apps; cross-platform mobile with React Native and Expo; responsive, animated UI.</p>
+      </div>
+      <div class="skill">
+        <h4>Backend Engineering</h4>
+        <p>NestJS and Node.js REST APIs on PostgreSQL with Prisma: OTP auth, payments, mobile-money and SMS integrations, Swagger docs.</p>
+      </div>
+      <div class="skill">
+        <h4>Applied AI Engineering</h4>
+        <p>LLM and voice agents, handwriting and document understanding, retrieval over private data, evaluation.</p>
+      </div>
+      <div class="skill" style="margin-bottom:0">
+        <h4>Product &amp; Research</h4>
+        <p>Discovery, roadmaps and launches; field research, community data and evidence-led iteration.</p>
+      </div>
+    </div>
+
+    <div>
+      <h2>How I Work</h2>
+      <ul class="approach">
+        <li><span><b>Listen</b> to the people closest to the problem.</span></li>
+        <li><span><b>Build</b> the smallest useful thing, fast.</span></li>
+        <li><span><b>Measure</b> usage and outcomes.</span></li>
+        <li><span><b>Improve</b> from evidence, not assumptions.</span></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<!-- ======================= PAGE 2 ======================= -->
+<div class="page">
+  <main>
+    <div class="mini-head">
+      <b>Mucyo Bertrand<span>.</span></b>
+      <span class="label">Web &amp; Mobile · Backend · Applied AI</span>
+    </div>
+
+    <section>
+      <h2>Experience (continued)</h2>
+      <div class="job" style="margin-bottom:0">
+        <div class="job-head">
+          <h3>Independent Engineer <span class="at">@ Open source</span></h3>
+          <span class="label when">2023 — Present</span>
+        </div>
+        <div class="sub">25+ public repositories · github.com/mucyobertrand</div>
+        <ul class="bul">
+          <li>Design and ship full products end to end: data model, API, web or mobile client, and deployment.</li>
+          <li>Build NestJS backends documented with <b>Swagger/OpenAPI</b>, with OTP authentication and PostgreSQL via Prisma.</li>
+          <li>Prototype IoT and embedded builds with <b>ESP8266</b>, <b>RFID</b> and <b>MQTT</b>, connected to real-time web dashboards.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <h4>Velo <span>NestJS · Prisma</span></h4>
+          <ul class="bul">
+            <li>Personal-finance app that reads MTN &amp; Airtel mobile-money SMS <b>on-device</b>, keeping raw messages private.</li>
+            <li>Built the API: phone-number <b>OTP login</b> (handles 07…, +250…, 00250… formats), bearer-token auth, premium unlock codes and signed reports.</li>
+            <li>Parsing rules served from the API and seeded per network; Swagger docs and admin-key routes.</li>
+          </ul>
+          <span class="link">github.com/mucyobertrand/velo-app-backend</span>
+        </div>
+
+        <div class="project">
+          <h4>Dent-Wise <span>Next.js 15 · Postgres</span></h4>
+          <ul class="bul">
+            <li>Dental practice platform: patients book appointments, manage records and message dentists.</li>
+            <li>Next.js 15 App Router, TypeScript, Tailwind CSS 4, Radix + shadcn/ui, React Query.</li>
+            <li>Clerk authentication; PostgreSQL with Prisma ORM; doctor management for clinics.</li>
+          </ul>
+          <span class="link">github.com/mucyobertrand/dent-wise</span>
+        </div>
+
+
+
+        <div class="project">
+          <h4>Career Space <span>React Native · TS</span></h4>
+          <ul class="bul">
+            <li>Expo (React Native) career app with its own TypeScript backend service.</li>
+            <li>Built end to end, from data model and API to mobile UI.</li>
+          </ul>
+          <span class="link">github.com/mucyobertrand/career-space</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section style="margin-bottom:0">
+      <h2>Product Portfolio</h2>
+      <ul class="bul">
+        <li><b>Entelon:</b> Klok AI (education) · HeyRwanda (travel &amp; payments) · Visko (voice field research) · Phibram (call-centre analytics).</li>
+        <li><b>IWP Africa:</b> Mamora (community health reporting) · ECD Intelligence (early childhood) · Trace (traceable produce marketplace).</li>
+      </ul>
+    </section>
+
+    <div class="foot label">Mucyo Bertrand · Resume · Page 2 / 2</div>
+  </main>
+
+  <aside>
+    <div>
+      <h2>Technical Toolkit</h2>
+      <div class="kit">
+        <span class="label">Languages</span>
+        <div class="chips"><span>TypeScript</span><span>JavaScript</span><span>Python</span><span>SQL</span><span>HTML/CSS</span></div>
+      </div>
+      <div class="kit">
+        <span class="label">Web &amp; Mobile</span>
+        <div class="chips"><span>React</span><span>Next.js</span><span>React Native</span><span>Expo</span><span>Tailwind</span><span>shadcn/ui</span><span>React Query</span><span>Motion</span></div>
+      </div>
+      <div class="kit">
+        <span class="label">Backend &amp; Data</span>
+        <div class="chips"><span>Node.js</span><span>NestJS</span><span>REST</span><span>PostgreSQL</span><span>Prisma</span><span>Swagger</span><span>OTP auth</span><span>Clerk</span></div>
+      </div>
+      <div class="kit">
+        <span class="label">Applied AI</span>
+        <div class="chips"><span>LLMs</span><span>Voice AI</span><span>Handwriting / OCR</span><span>RAG</span><span>ML in Python</span></div>
+      </div>
+      <div class="kit">
+        <span class="label">IoT &amp; Embedded</span>
+        <div class="chips"><span>ESP8266</span><span>RFID</span><span>MQTT</span></div>
+      </div>
+      <div class="kit" style="margin-bottom:0">
+        <span class="label">Tools</span>
+        <div class="chips"><span>Git</span><span>GitHub</span><span>Vercel</span></div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Domains</h2>
+      <div class="chips"><span>AI</span><span>Health</span><span>Education</span><span>Agriculture</span><span>Fintech</span><span>Travel</span></div>
+    </div>
+
+
+    <p class="quote">Build technology the people closest to the problem actually want to use, and prove it works.</p>
+  </aside>
+</div>
+
+</body>
+</html>

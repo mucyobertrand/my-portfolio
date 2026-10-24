@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AboutHero from "@/components/AboutHero";
 import Experience from "@/components/Experience";
+import Recognition from "@/components/Recognition";
 import ContactCTA from "@/components/ContactCTA";
 import { Marquee } from "@/components/Services";
 import { FadeIn, ScrollLit, SplitText } from "@/components/motion";
@@ -69,6 +70,7 @@ export default function AboutPage() {
 
       <Marquee words={services.map((s) => s.title)} />
       <Experience dark />
+      <Recognition />
       <ContactCTA />
     </>
   );
